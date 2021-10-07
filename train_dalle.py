@@ -381,7 +381,7 @@ if ENABLE_WEBDATASET:
     w_dataset = wds.WebDataset(DATASET, handler=wds.warn_and_continue)
     filtered_dataset = w_dataset.select(filter_dataset)
     ds = filtered_dataset.map_dict(**image_text_mapping).map_dict(**image_mapping).to_tuple(mycap, myimg).batched(BATCH_SIZE, partial=True)
-    ds = patch_iterable_ds_len(dl, lambda: DATASET_SIZE)
+    ds = patch_iterable_ds_len(ds, lambda: DATASET_SIZE)
 else:
     ds = TextImageDataset(
         args.image_text_folder,

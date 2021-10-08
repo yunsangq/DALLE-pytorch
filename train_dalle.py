@@ -458,13 +458,15 @@ if distr_backend.is_root_worker():
         heads=HEADS,
         dim_head=DIM_HEAD
     )
-
+    wandb.login(key="e4933b597ce0b15f596492250d14fc41e62eed66")
     run = wandb.init(
         project=args.wandb_name,
         entity=args.wandb_entity,
         resume=False,
         config=model_config,
     )
+
+    
 
 # distribute
 
